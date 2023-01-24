@@ -3,11 +3,13 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 
 export default function FestsTableDropdown(props) {
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
-    const creds = require('../config/aversions-react-todo-dbf10594a556.json');
     async function updateCell(e, cellSelector) {
         let cell = 'H' + String(cellSelector + 2);
         try {
-            await doc.useServiceAccountAuth(creds);
+            await doc.useServiceAccountAuth({
+                client_email: process.env.REACT_APP_CLIENT_EMAIL,
+                private_key: process.env.REACT_APP_GSHEET_API_KEY.replace(/\n/g, '\n'),
+            });
             await doc.loadInfo();
             const sheet = doc.sheetsById['421138511'];
             await sheet.loadCells('H2:H30');
