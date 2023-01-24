@@ -39,7 +39,10 @@
       "last 1 safari version"
     ]
   },
-  "browser":{
+  "browser": {
     "child_process": false
-  } 
+  },
+  "engines": {
+    "node": "16.x"
+  }
 }
