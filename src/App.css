@@ -7,7 +7,7 @@
   border-collapse: collapse;
   min-width: 100%;
 
-  grid-template-columns: 1.5fr 0.5fr 0.25fr 1.75fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-columns: 1.5fr 1fr 0.25fr 1.25fr 0.75fr 1fr 0.5fr 0.5fr;
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 0px;

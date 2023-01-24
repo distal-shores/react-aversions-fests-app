@@ -3,7 +3,7 @@ import useGoogleSheets from 'use-google-sheets';
 import FestsTable from './components/FestsTable';
 import FestsFilters from './components/FestsFilters';
 import FestsSearch from './components/FestsSearch';
-import React, { useState  }  from 'react';
+import React, { useState }  from 'react';
 
 function App() {
   const { data, loading, error, refetch, called } = useGoogleSheets({
@@ -32,36 +32,39 @@ function App() {
   }
 
   if (called) {
-    const festData = data[0].data;
-    const { id, ...headerNames } = festData[0];
-    const headers = Object.keys(headerNames);
-    festData.forEach((fest, i) => {
+
+    const fests = data[0].data;
+    fests.forEach((fest, i) => {
       fest.id = i;
     });
+    const rowCount = fests.length;
+    const { id, ...headerNames } = fests[0];
+    const headers = Object.keys(headerNames);
+
     function festsFiltered(term) {
       if (filter === 'all') {
-        return festData;
+        return fests;
       } else if (filter === 'active') {
-        return festData.filter((fest) => (
+        return fests.filter((fest) => (
           fest.Status === 'APPLIED' ||
           fest.Status === 'EMAILED TO INQUIRE'
         ));
       } else if (filter === 'inactive') {
-        return festData.filter((fest) => (
+        return fests.filter((fest) => (
           fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'N/A' || 
           fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'Declined' || 
           fest.Result === 'Declined'
         ));
       } else if (filter === 'upcoming') {
-        return festData.filter((fest) => (
+        return fests.filter((fest) => (
           fest.Status === 'SUBMISSIONS NOT OPEN YET'
         ));
       } else if (filter === 'response') {
-        return festData.filter((fest) => (
+        return fests.filter((fest) => (
           fest.Response === 'TRUE'
         ));
       } else if (filter === 'no_response') {
-        return festData.filter((fest) => (
+        return fests.filter((fest) => (
           fest.Response === 'FALSE'
         ));
       } 

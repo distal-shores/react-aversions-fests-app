@@ -12,14 +12,11 @@ export default function FestsFilters(props) {
         'no_response'
     ];
 
-    function refresh() {
-        props.refetch();
-    }
-    
     return (
         <div className="filters-container">
-            {filters.map((filt) => (
-                <button 
+            {filters.map((filt, index) => (
+                <button
+                    key={filt+index}
                     id={filt}
                     className="filter" 
                     onClick={() => {
@@ -30,7 +27,7 @@ export default function FestsFilters(props) {
                     {_.startCase(_.toLower(filt))}
                 </button>
             ))}
-            <button className="filters-refresh" onClick={refresh}>Refresh</button>
+            <button className="filters-refresh" onClick={props.refresh}>Refresh</button>
         </div>
     )
 }

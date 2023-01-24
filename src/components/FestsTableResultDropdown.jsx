@@ -22,7 +22,7 @@ export default function FestsTableDropdown(props) {
         }
     };
     return (
-        <td key={(Math.random() + 1).toString(36).substring(7)}>
+        <td key={'festResultDropdown' + props.index}>
             <select name="result" id="result" defaultValue={props.value} onChange={(e) => updateCell(e, props.index)}>
                 <option value="&nbsp;"></option>
                 <option value="Accepted">Accepted</option>

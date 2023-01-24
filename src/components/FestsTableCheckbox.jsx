@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function FestsTableCheckbox(props) {
-    
+
     const { GoogleSpreadsheet } = require('google-spreadsheet');
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
     const [isChecked, setIsChecked] = useState(checkBool(props.value));
@@ -29,7 +29,7 @@ export default function FestsTableCheckbox(props) {
         }
     };
     return (
-        <td key={(Math.random() + 1).toString(36).substring(7)}>
+        <td key={'festCheckbox' + props.index}>
             <input type="checkbox" defaultChecked={isChecked} onChange={() => updateCell(props.index)}/>
         </td>
     )

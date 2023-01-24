@@ -1,5 +1,6 @@
 import React from 'react';
-import FestsTableDropdown from './FestsTableDropdown.jsx';
+import FestsTableResultDropdown from './FestsTableResultDropdown.jsx';
+import FestsTableStatusDropdown from './FestsTableStatusDropdown.jsx';
 import FestsTableCheckbox from './FestsTableCheckbox.jsx';
 
 export default function FestsTable(props) {
@@ -28,7 +29,9 @@ export default function FestsTable(props) {
               if (header === 'Response') {
                 return <FestsTableCheckbox refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
               } else if(header === 'Result') {
-                return <FestsTableDropdown refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
+                return <FestsTableResultDropdown refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
+              } else if(header === 'Status') {
+                return <FestsTableStatusDropdown refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
               } else {
                 return <td key={(Math.random() + 1).toString(36).substring(7)}>{fest[header]}</td>
               }
