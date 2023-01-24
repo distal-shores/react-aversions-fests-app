@@ -1,7 +1,7 @@
 import React from 'react';
-import { GoogleSpreadsheet } from "google-spreadsheet";
 
 export default function FestsTableDropdown(props) {
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
     async function updateCell(e, cellSelector) {
         let cell = 'H' + String(cellSelector + 2);

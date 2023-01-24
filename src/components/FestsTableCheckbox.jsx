@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { GoogleSpreadsheet } from "google-spreadsheet";
 
 export default function FestsTableCheckbox(props) {
-
+    
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
     const [isChecked, setIsChecked] = useState(checkBool(props.value));
     function checkBool(string) {
