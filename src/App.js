@@ -9,8 +9,14 @@ import { Container } from 'react-bulma-components';
 
 function App() {
   return (
-    <Container className="wrapper">
-      <Dashboard />
+    <Container>
+      <nav>
+        <ul>
+          <li>
+            <a href={`/dashboard`}>Dashboard</a>
+          </li>
+        </ul>
+      </nav>
     </Container>
   )
 }
