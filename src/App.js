@@ -1,9 +1,11 @@
 import './App.css';
+import 'bulma/css/bulma.min.css';
 import useGoogleSheets from 'use-google-sheets';
 import FestsTable from './components/FestsTable';
 import FestsFilters from './components/FestsFilters';
 import FestsSearch from './components/FestsSearch';
 import React, { useState }  from 'react';
+import { Container } from 'react-bulma-components';
 
 function App() {
   const { data, loading, error, refetch, called } = useGoogleSheets({
@@ -71,8 +73,9 @@ function App() {
     }
 
     return (
-      <div className="container">
+      <Container>
         <FestsFilters
+          filter={filter}
           setFilter={setFilter}
           festsFiltered={festsFiltered}
           setSearchTerm={setSearchTerm}
@@ -88,7 +91,7 @@ function App() {
           headers={headers}
           refresh={refresh}
         />
-      </div>
+      </Container>
     );
   }
 }

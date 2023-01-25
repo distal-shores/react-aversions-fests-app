@@ -2,6 +2,7 @@ import React from 'react';
 import FestsTableResultDropdown from './FestsTableResultDropdown.jsx';
 import FestsTableStatusDropdown from './FestsTableStatusDropdown.jsx';
 import FestsTableCheckbox from './FestsTableCheckbox.jsx';
+import { Table } from 'react-bulma-components';
 
 export default function FestsTable(props) {
   function checkSearchTerm(fest) {
@@ -12,7 +13,7 @@ export default function FestsTable(props) {
     }
   }
   return (
-    <table className="festList">
+    <Table className="festList">
       <thead>
         <tr>
           {props.headers.map((header, index) => (
@@ -39,6 +40,6 @@ export default function FestsTable(props) {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }

@@ -1,16 +1,9 @@
-.container { 
-  padding: 25px;
+.container {
+  padding-top: 25px;
 }
 
 .festList {
-  display: grid;
-  border-collapse: collapse;
-  min-width: 100%;
-
-  grid-template-columns: 1.5fr 1fr 0.25fr 1.25fr 0.75fr 1fr 0.5fr 0.5fr;
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 5px;
-  grid-row-gap: 0px;
+  width: 100%;
 }
 
 .filters-container {
@@ -28,19 +21,4 @@
 
 .filters-refresh {
   margin-left: auto;
-}
-
-.search-container input {
-  min-width: 250px;
-  width: 19%;
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th {
-  text-align: left;
 }

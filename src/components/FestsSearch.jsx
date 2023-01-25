@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Form } from 'react-bulma-components';
 
 export default function FestsSearch(props) {
+  const { Input } = Form;
   return (
     <div className="search-container">
-        <input 
-            type="text" 
+        <Input 
+            type="text"
+            size="small"
             placeholder="Search Festivals by Name or City" 
             onChange={e => {
                 props.setSearchTerm(e.target.value);
