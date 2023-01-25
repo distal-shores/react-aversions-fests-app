@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { Form } from 'react-bulma-components';
 
 export default function FestsTableStatusDropdown(props) {
+    const { Select } = Form;
     const { GoogleSpreadsheet } = require('google-spreadsheet');
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
     async function updateCell(e, cellSelector) {
@@ -23,14 +25,21 @@ export default function FestsTableStatusDropdown(props) {
     };
     return (
         <td key={'festStatusDropdown' + props.index}>
-            <select name="status" id="status" defaultValue={props.value} onChange={(e) => updateCell(e, props.index)}>
+            <Select 
+                name="status" 
+                id="status" 
+                defaultValue={props.value} 
+                onChange={(e) => updateCell(e, props.index)}
+                size="small"
+                color="text"
+            >
                 <option value="&nbsp;"></option>
                 <option value="SUBMISSIONS CLOSED">SUBMISSIONS CLOSED</option>
                 <option value="SUBMISSIONS NOT OPEN YET">SUBMISSIONS NOT OPEN YET</option>
                 <option value="SUBMISSIONS NOT OPEN YET">SUBMISSIONS NOT OPEN YET</option>
                 <option value="APPLIED">APPLIED</option>
                 <option value="EMAILED TO INQUIRE">EMAILED TO INQUIRE</option>
-            </select>
+            </Select>
         </td>
     )
 }

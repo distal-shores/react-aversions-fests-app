@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import 'bulma/css/bulma.min.css';
 import useGoogleSheets from 'use-google-sheets';
 import FestsTable from './components/FestsTable';
@@ -53,8 +53,8 @@ function App() {
         ));
       } else if (filter === 'inactive') {
         return fests.filter((fest) => (
-          fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'N/A' || 
-          fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'Declined' || 
+          (fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'N/A') || 
+          (fest.Status === 'SUBMISSIONS CLOSED' && fest.Result === 'Declined') || 
           fest.Result === 'Declined'
         ));
       } else if (filter === 'upcoming') {

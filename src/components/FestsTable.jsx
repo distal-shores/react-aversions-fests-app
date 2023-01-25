@@ -25,16 +25,35 @@ export default function FestsTable(props) {
         {props.festsFiltered()
         .filter(checkSearchTerm)
         .map((fest, index) => (
-          <tr key={(Math.random() + 1).toString(36).substring(7)}>
+          <tr key={'tableRow' + index}  >
             {props.headers.map((header) => {
               if (header === 'Response') {
-                return <FestsTableCheckbox refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
+                return <FestsTableCheckbox 
+                  refresh={props.refresh} 
+                  key={'tableCell' + fest.id + header} 
+                  index={fest.id} 
+                  value={fest[header]} 
+                />
               } else if(header === 'Result') {
-                return <FestsTableResultDropdown refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
+                return <FestsTableResultDropdown 
+                  refresh={props.refresh} 
+                  key={'tableCell' + fest.id + header} 
+                  index={fest.id} 
+                  value={fest[header]} 
+                />
               } else if(header === 'Status') {
-                return <FestsTableStatusDropdown refresh={props.refresh} key={(Math.random() + 1).toString(36).substring(7)} index={fest.id} value={fest[header]} />
+                return <FestsTableStatusDropdown 
+                  refresh={props.refresh} 
+                  key={'tableCell' + fest.id + header} 
+                  index={fest.id} 
+                  value={fest[header]} 
+                />
               } else {
-                return <td key={(Math.random() + 1).toString(36).substring(7)}>{fest[header]}</td>
+                return <td 
+                  key={'tableCell' + fest.id + header}
+                >
+                  {fest[header]}
+                </td>
               }
             })}
           </tr>
