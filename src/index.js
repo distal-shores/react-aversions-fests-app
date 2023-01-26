@@ -5,7 +5,9 @@ import './index.css';
 import App from './App';
 import ErrorPage from "./components/ErrorPage";
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Reset from "./components/auth/Reset";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -24,6 +26,16 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "reset",
+    element: <Reset />,
     errorElement: <ErrorPage />,
   },
 
