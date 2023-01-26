@@ -88,6 +88,7 @@ export default function Dashboard() {
               searchTerm={searchTerm}
               headers={headers}
               refresh={refresh}
+              rowCount={rowCount}
             />
           </Container>
         );

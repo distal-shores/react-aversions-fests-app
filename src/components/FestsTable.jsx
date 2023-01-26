@@ -26,7 +26,7 @@ export default function FestsTable(props) {
         .filter(checkSearchTerm)
         .map((fest, index) => (
           <tr key={'tableRow' + index}  >
-            {props.headers.map((header) => {
+            {props.headers.map((header, headerIndex) => {
               if (header === 'Response') {
                 return <FestsTableCheckbox 
                   refresh={props.refresh} 
@@ -38,15 +38,19 @@ export default function FestsTable(props) {
                 return <FestsTableResultDropdown 
                   refresh={props.refresh} 
                   key={'tableCell' + fest.id + header} 
-                  index={fest.id} 
-                  value={fest[header]} 
+                  index={fest.id}
+                  value={fest[header]}
+                  headerIndex={headerIndex}
+                  rowCount={props.rowCount}
                 />
               } else if(header === 'Status') {
                 return <FestsTableStatusDropdown 
                   refresh={props.refresh} 
                   key={'tableCell' + fest.id + header} 
                   index={fest.id} 
-                  value={fest[header]} 
+                  value={fest[header]}
+                  headerIndex={headerIndex}
+                  rowCount={props.rowCount}
                 />
               } else {
                 return <td 
