@@ -5,7 +5,7 @@ import FestsFilters from './FestsFilters';
 import FestsSearch from './FestsSearch';
 import { Container } from 'react-bulma-components';
 
-export default function Dashboard() {
+export default function Fests() {
     const { data, loading, error, refetch, called } = useGoogleSheets({
         apiKey: process.env.REACT_APP_API_KEY,
         sheetId: process.env.REACT_APP_SHEET_ID,
@@ -20,7 +20,7 @@ export default function Dashboard() {
     const[searchTerm, setSearchTerm] = useState('');
     
     function refresh() {
-    refetch();
+      refetch();
     }
 
     if (loading) {

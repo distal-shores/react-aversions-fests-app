@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
 import ErrorPage from "./components/ErrorPage";
-import Dashboard from "./components/Dashboard";
+import Fests from "./components/Fests";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Reset from "./components/auth/Reset";
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/fests",
+        element: <Fests />,
         errorElement: <ErrorPage />,
       }
     ]

@@ -1,19 +1,12 @@
-import { useState } from 'react';
+export default function useUpdateCell(event, cellSelector, headerIndex, rowCount, refresh) {
 
-function useUpdateCell(props) {
-
-    const[cellColumn, setCellColumn] = useState('');
-    const[cellIndex, setCellIndex] = useState(0);
-    const[cell, setCell] = useState('');
-    const[cellSpan, setCellSpan] = useState('');
+    const colLetter = String.fromCharCode((headerIndex + 1) + 64);
+    const cell = colLetter + String(cellSelector + 2);
+    const cellSpan = colLetter + '2:' + colLetter + rowCount;
     const { GoogleSpreadsheet } = require('google-spreadsheet');
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SHEET_ID);
 
-    async function updateCell(e, cellIndex, cellColumn, cellSpan) {
-        setCell(cellColumn + String(cellIndex + 2));
-        setCellColumn(cellColumn);
-        setCellIndex(cellIndex);
-        setCellSpan(cellColumn + '2:' + cellColumn + String(props.rowCount));
+    async function updateCell(event, cell, cellSpan) {
         try {
             await doc.useServiceAccountAuth({
                 client_email: process.env.REACT_APP_CLIENT_EMAIL,
@@ -23,15 +16,13 @@ function useUpdateCell(props) {
             const sheet = doc.sheetsById[process.env.REACT_APP_PAGE_ID];
             await sheet.loadCells(cellSpan);
             const gotCell = sheet.getCellByA1(cell);
-            gotCell.value = e.target.value;
+            gotCell.value = event.target.value;
             await sheet.saveUpdatedCells();
-            props.refresh();
-        } catch (e) {
-            console.error('Error: ', e);
+            refresh();
+        } catch (event) {
+            console.error('Error: ', event);
         }
-    }
+    };
 
-    updateCell(props.e, cell, cellSpan);
+    return updateCell(event, cell, cellSpan);
 }
-
-export default useUpdateCell;

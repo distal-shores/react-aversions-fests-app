@@ -36,7 +36,7 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to={`/dashboard`}>Dashboard</Link>
+            <Link to={`/fests`}>Festivals</Link>
           </li>
           <li>
             <Link onClick={handleLogout}>
