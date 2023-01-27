@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Form, Button, Container } from 'react-bulma-components';
+import { Form, Button, Box } from 'react-bulma-components';
 
 export default function Login() {
     const { Label, Input } = Form;
@@ -26,8 +26,12 @@ export default function Login() {
             console.log(errorCode, errorMessage)
         }); 
     }
+    useEffect(() => {
+        if (loading) return;
+        if (user) navigate("/");
+    }, [user, loading]);
     return(
-        <Container>
+        <Box>
             <form>
                 <Label>
                     <p>Username</p>
@@ -47,21 +51,22 @@ export default function Login() {
                         placeholder="Password"
                     />
                 </Label>
-                <div>
+                <Button.Group className="mb-0" align="right">
                     <Button 
                         type="submit"
                         onClick={onLogin}
+                        color="primary"
                     >
                         Login
                     </Button>
-                </div>
-                <div>
+                </Button.Group>
+                <Button.Group align="right">
                     <Link to="/reset">Forgot Password</Link>
-                </div>
-                <div>
+                </Button.Group>
+                {/* <div>
                     Don't have an account? <Link to="/register">Register</Link> now.
-                </div>
+                </div> */}
             </form>
-        </Container>
+        </Box>
     )
 }

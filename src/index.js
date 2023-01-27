@@ -24,20 +24,20 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "login",
+    path: "/login",
     element: <Login />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "register",
-    element: <Register />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "reset",
+    path: "/reset",
     element: <Reset />,
     errorElement: <ErrorPage />,
   },
+  // {
+  //   path: "register",
+  //   element: <Register />,
+  //   errorElement: <ErrorPage />,
+  // },
 
 ]);
 

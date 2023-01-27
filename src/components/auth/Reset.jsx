@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { auth, sendPasswordReset } from "../../firebase";
-import { Form, Button, Container } from 'react-bulma-components';
+import { Form, Button, Box } from 'react-bulma-components';
 
 export default function Reset() {
     const { Label, Input } = Form;
@@ -12,10 +12,10 @@ export default function Reset() {
     const navigate = useNavigate();
     useEffect(() => {
         if (loading) return;
-        if (user) navigate("/dashboard");
+        if (user) navigate("/");
     }, [user, loading]);
     return (
-        <Container>
+        <Box>
             <div className="reset__container">
                 <Label>
                     <p>E-mail Address</p>
@@ -26,15 +26,15 @@ export default function Reset() {
                         placeholder="E-mail Address"
                     />
                 </Label>
-                <Button
-                    onClick={() => sendPasswordReset(email)}
-                >
-                    Send password reset email
-                </Button>
-                <div>
-                    Don't have an account? <Link to="/register">Register</Link> now.
-                </div>
+                <Button.Group align="right">
+                    <Button
+                        onClick={() => sendPasswordReset(email)}
+                        color="primary"
+                    >
+                        Send password reset email
+                    </Button>
+                </Button.Group>
             </div>
-        </Container>
+        </Box>
     )
 }
