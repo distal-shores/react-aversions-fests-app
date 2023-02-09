@@ -18,12 +18,12 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAb5AAdn4mnGHiCUizu1Rfg8hxZNgFF2iI",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "aversions-react-todo.firebaseapp.com",
   projectId: "aversions-react-todo",
   storageBucket: "aversions-react-todo.appspot.com",
   messagingSenderId: "876557459204",
-  appId: "1:876557459204:web:99ee420a0b4964cebffa51",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: "G-7PXXVSXCDT"
 };
 
